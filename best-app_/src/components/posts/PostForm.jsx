@@ -40,6 +40,10 @@ export default function PostForm() {
         try {
             if (!authUser || !formData.name) {
                 alert('로그인해야 이용 가능합니다');
+                resetFormData();
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = ''; // DOM 엘리먼트의 value를 직접 비웁니다.
+                }
                 return;
             }
 
@@ -82,7 +86,7 @@ export default function PostForm() {
                         name="name"
                         onChange={handleChange}
                         value={authUser?.email ?? ''}
-                        placeholder={authUser?.email ?? '로그인해야 이용 가능해요'}
+                        placeholder={authUser?.email ?? '로그인하세요'}
                     />
                 </Form.Group>
                 <Form.Group controlId="title">

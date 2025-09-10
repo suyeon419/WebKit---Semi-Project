@@ -89,7 +89,7 @@ export default function SignUp() {
                     <Form.Label column sm={2}>
                         이름
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <Form.Control
                             type="text"
                             name="name"
@@ -105,7 +105,7 @@ export default function SignUp() {
                     <Form.Label column sm={2}>
                         이메일
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <Form.Control
                             type="email"
                             name="email"
@@ -115,11 +115,7 @@ export default function SignUp() {
                             onChange={handleChange}
                         />
                     </Col>
-                    <Col sm={2}>
-                        <Button type="button" variant="success">
-                            중복체크
-                        </Button>
-                    </Col>
+
                     <div className="mt-2 small text-primary d-none">이메일 중복여부 체크 결과 메시지</div>
                 </Form.Group>
 
@@ -128,7 +124,7 @@ export default function SignUp() {
                     <Form.Label column sm={2}>
                         비밀번호
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <Form.Control
                             type="password"
                             name="passwd"
@@ -145,7 +141,7 @@ export default function SignUp() {
                     <Form.Label column sm={2}>
                         역 할
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <Form.Select name="role" value={role} ref={roleRef} onChange={handleChange}>
                             <option value="">:::역할 선택::</option>
                             <option value="USER">USER</option>

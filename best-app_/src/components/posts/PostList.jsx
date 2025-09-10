@@ -32,10 +32,8 @@ export default function PostList() {
 
     return (
         <div className="post-list">
-            <h3 className="my-3">
-                {' '}
-                총 게시글 수: {totalCount} 개 {'     '} {page} page / {totalPages} pages
-            </h3>
+            <h3 className="my-3 fw-semibold">게시글</h3>
+            <hr />
 
             {postList.length === 0 && <div>데이터가 없습니다</div>}
             {postList.length > 0 &&

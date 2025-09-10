@@ -8,7 +8,7 @@ export default function PostApp() {
         <div className="container">
             <div className="row my-4">
                 <div className="col-md-8 offset-md-2 col-sm-10 offset-sm-1">
-                    <h1 className="text-center">Posts</h1>
+                    <h1 className="text-center fw-bold">방명록</h1>
 
                     <PostForm />
                 </div>

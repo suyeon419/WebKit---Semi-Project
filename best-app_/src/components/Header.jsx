@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { useAuthStore } from '../stores/authStore';
 import { Link, useNavigate } from 'react-router-dom';
 import { apiLogout } from '../api/userApi';
+import { BsHouse } from 'react-icons/bs';
 
 export default function Header({ setShowLogin }) {
     const authUser = useAuthStore((s) => s.authUser);
@@ -31,7 +32,10 @@ export default function Header({ setShowLogin }) {
         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" fixed="top" bg="dark" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    <span className="h2">Best</span>&nbsp;&nbsp;&nbsp;
+                    <span className="h2">
+                        <BsHouse /> 숙소 이름
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
                     {authUser && <span className="text-center"> {authUser.name} 님 로그인 중 ...</span>}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -47,11 +51,13 @@ export default function Header({ setShowLogin }) {
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/posts">
-                            Posts
+                            방명록
                         </Nav.Link>
-                        <Nav.Link eventKey={2} as={Link} to="/mypage">
-                            MyPage
-                        </Nav.Link>
+                        {authUser && (
+                            <Nav.Link eventKey={2} as={Link} to="/mypage">
+                                MyPage
+                            </Nav.Link>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

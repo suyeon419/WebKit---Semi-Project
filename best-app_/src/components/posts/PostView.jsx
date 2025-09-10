@@ -77,12 +77,12 @@ export default function PostView() {
                     <h1 className="my-5 text-center"> {post.title} </h1>
 
                     <div className="text-end my-2">
-                        {authUser && (
+                        {authUser?.email === post.name && (
                             <Link to={`/postEdit/${id}`} onClick={go}>
                                 <button className="btn btn-secondary mx-2">수정</button>
                             </Link>
                         )}
-                        {authUser && (
+                        {authUser?.email === post.name && (
                             <button className="btn btn-danger" onClick={(e) => handleDelete(id, e)}>
                                 삭제
                             </button>
