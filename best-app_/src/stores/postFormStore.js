@@ -11,7 +11,7 @@ import { devtools } from 'zustand/middleware';
 export const usePostFormStore = create(
     devtools((set) => ({
         formData: {
-            name: 'dooly@a.b.c',
+            name: '',
             title: '',
             content: '',
             file: '', //첨부파일명. 글수정시 기존에 첨부한 파일명

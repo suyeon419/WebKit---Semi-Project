@@ -10,6 +10,7 @@ export default function PostForm() {
     const { formData, setFormData, resetFormData } = usePostFormStore();
     const fetchPostList = usePostStore((s) => s.fetchPostList);
     const authUser = useAuthStore((s) => s.authUser);
+    const fileInputRef = useRef(null);
 
     const titleRef = useRef();
 
@@ -27,8 +28,15 @@ export default function PostForm() {
         }
     };
 
+    useEffect(() => {
+        if (authUser && authUser.email) {
+            setFormData({ name: authUser.email });
+        }
+    }, [authUser, setFormData]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             if (!authUser || !formData.name) {
                 alert('로그인해야 이용 가능합니다');
@@ -52,6 +60,9 @@ export default function PostForm() {
             //alert(JSON.stringify(result));
             //전체 글목록 새로고침
             resetFormData();
+            if (fileInputRef.current) {
+                fileInputRef.current.value = ''; // DOM 엘리먼트의 value를 직접 비웁니다.
+            }
             titleRef.current?.focus();
 
             await fetchPostList();
@@ -91,7 +102,7 @@ export default function PostForm() {
                 </Form.Group>
                 <Form.Group controlId="file">
                     <Form.Label>File</Form.Label>
-                    <Form.Control type="file" onChange={handleFileChange} />
+                    <Form.Control type="file" onChange={handleFileChange} ref={fileInputRef} />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="my-2">
                     글쓰기

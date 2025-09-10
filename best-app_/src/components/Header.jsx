@@ -42,26 +42,8 @@ export default function Header({ setShowLogin }) {
                                 SingUp
                             </Nav.Link>
                         )}
-                        {!authUser && (
-                            <Nav.Item>
-                                <button
-                                    onClick={() => setShowLogin(true)}
-                                    className="btn"
-                                    style={{ color: 'white', border: 'none', background: 'none' }}
-                                >
-                                    SignIn
-                                </button>
-                            </Nav.Item>
-                        )}
-                        {authUser && (
-                            <button
-                                variant="outline-success"
-                                style={{ color: 'white', border: 'none', background: 'none' }}
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
-                        )}
+                        {!authUser && <Nav.Link onClick={() => setShowLogin(true)}>SignIn</Nav.Link>}
+                        {authUser && <Nav.Link onClick={handleLogout}>Logout</Nav.Link>}
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/posts">
